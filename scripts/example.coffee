@@ -8,17 +8,42 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-  hellos = [
-    "おはよ",
-    "やっほ",
-    "Good morning"
-  ]
+hellos = [
+  "おはよ",
+  "やっほ",
+  "Good morning"
+]
 
-  module.exports = (robot) ->
+godzilas = [
+  "ガッジーラ",
+  "Rando Yaguchiがbetterな選択"
+]
 
-    robot.hear /(hello|good( [d'])?ay(e)?)/i, (msg) ->
-      hello = msg.random hellos
-   	  msg.send hello.replace "%", msg.message.user.name
+fights = [
+  "お疲れさま",
+  "たまには休むことも大切だよ",
+  "Yaguchiほどじゃないわ"
+]
+
+module.exports = (robot) ->
+  robot.respond /Who\sam\sI/i, (msg) ->
+    msg.send "You are #{msg.message.user.name}"
+
+
+module.exports = (robot) ->
+  robot.hear /(hello|good( [d'])?ay(e)?)/i, (msg) ->
+    hello = msg.random hellos
+    msg.send hello.replace "%", msg.message.user.name
+
+module.exports = (robot) ->
+	robot.hear /(godzila|Godzila|ゴジラ)/, (msg) ->
+    godzila = msg.random godzilas
+    msg.send godzila.replace "%", msg.message.user.name
+
+module.exports = (robot) ->
+  robot.hear /.*(疲れた|つかれた).*/, (msg) ->
+    fight = msg.random fights
+    msg.send fight.replace "%", msg.message.user.name
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
