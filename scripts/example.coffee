@@ -14,18 +14,42 @@ hellos = [
   "モーニング"
 ]
 
+heal_words = [
+  "もう、しょうがないんだからあ",
+  "そんなに欲しい？",
+  "これで癒されてね!!",
+  "ふぁいと!!"
+]
+
+heal_imgs = [
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMbWgtWDRDcW1OUEU/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMNVFoWERrb0ROY1U/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMVGRuampiXzg3NkE/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMZC1SMjJ6WGRDczQ/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMUXQ2NlNZTy1KWnM/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMRUhSZHRrcXZiUzA/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMV0l1QTNSem5aLXM/view?usp=sharing",
+  "https://drive.google.com/file/d/0B8TFgKtyNaHMZEtqTjdpTFJjWmc/view?usp=sharing"
+]
+
+
 module.exports = (robot) ->
 
   robot.hear /(おはよ.|hello|good( [d'])?ay(e)?)/i, (msg) ->
     hello = msg.random hellos
-    msg.send hello.replace "%", msg.message.user.name
+    msg.send "#{msg.message.user.name}、#{hello}"
 
   robot.hear /(godzila|ゴジラ)/i, (msg) ->
-    msg.send "ガッジーラ"
+    timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "")
+    msg.send "ガッジーラ", "https://drive.google.com/file/d/0B8TFgKtyNaHMRWlMRWV6emlId3M/view?usp=sharing?#{timestamp}"
 
   robot.hear /(疲れた|つかれた)/i, (msg) ->
     msg.send "#{msg.message.user.name}、お疲れさま！"
 
+  robot.hear /(いやし|癒し|heal me)/i, (msg) ->
+    heal_word = msg.random heal_words
+    heal_img = msg.random heal_imgs
+    msg.send heal_word, heal_img
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
