@@ -22,14 +22,14 @@ heal_words = [
 ]
 
 heal_imgs = [
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMbWgtWDRDcW1OUEU/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMNVFoWERrb0ROY1U/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMVGRuampiXzg3NkE/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMZC1SMjJ6WGRDczQ/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMUXQ2NlNZTy1KWnM/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMRUhSZHRrcXZiUzA/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMV0l1QTNSem5aLXM/view?usp=sharing",
-  "https://drive.google.com/file/d/0B8TFgKtyNaHMZEtqTjdpTFJjWmc/view?usp=sharing"
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMbWgtWDRDcW1OUEU",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMNVFoWERrb0ROY1U",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMVGRuampiXzg3NkE",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMZC1SMjJ6WGRDczQ",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMUXQ2NlNZTy1KWnM",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMRUhSZHRrcXZiUzA",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMV0l1QTNSem5aLXM",
+  "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMZEtqTjdpTFJjWmc"
 ]
 
 module.exports = (robot) ->
@@ -40,7 +40,7 @@ module.exports = (robot) ->
 
   robot.hear /(godzila|ゴジラ)/i, (msg) ->
     timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "")
-    msg.send "ガッジーラ", "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMRWlMRWV6emlId3M&#{timestamp}"
+    msg.send "ガッジーラ", "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMRWlMRWV6emlId3M&time=#{timestamp}"
 
   robot.hear /(疲れた|つかれた)/i, (msg) ->
     msg.send "#{msg.message.user.name}、お疲れさま！"
@@ -49,7 +49,7 @@ module.exports = (robot) ->
     timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "")
     heal_word = msg.random heal_words
     heal_img = msg.random heal_imgs
-    heal_img = "#{heal_img}?#{timestamp}"
+    heal_img = "#{heal_img}&time=#{timestamp}"
     msg.send heal_word, heal_img
 
   robot.hear /(コードレビュー|code.*\sreview)/i, (msg) ->
