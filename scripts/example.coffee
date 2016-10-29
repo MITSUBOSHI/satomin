@@ -47,8 +47,10 @@ module.exports = (robot) ->
     msg.send "#{msg.message.user.name}、お疲れさま！"
 
   robot.hear /(いやし|癒し|heal me)/i, (msg) ->
+    timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "")
     heal_word = msg.random heal_words
     heal_img = msg.random heal_imgs
+    heal_img = "#{heal_img}?#{timestamp}"
     msg.send heal_word, heal_img
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
