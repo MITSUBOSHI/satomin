@@ -32,10 +32,9 @@ heal_imgs = [
   "https://drive.google.com/file/d/0B8TFgKtyNaHMZEtqTjdpTFJjWmc/view?usp=sharing"
 ]
 
-
 module.exports = (robot) ->
 
-  robot.hear /(おはよ.|hello|good( [d'])?ay(e)?)/i, (msg) ->
+  robot.hear /(おはよ.*|hello|good( [d'])?ay(e)?)/i, (msg) ->
     hello = msg.random hellos
     msg.send "#{msg.message.user.name}、#{hello}"
 
@@ -52,6 +51,30 @@ module.exports = (robot) ->
     heal_img = msg.random heal_imgs
     heal_img = "#{heal_img}?#{timestamp}"
     msg.send heal_word, heal_img
+
+  robot.hear /(コードレビュー|code.*\sreview)/i, (msg) ->
+    msg.send "F**king damn codesね"
+
+  robot.hear /人工無脳/i, (msg) ->
+    msg.send "あ、ただの無能みーつけたっ！"
+
+  robot.hear /卍解/i, (msg) ->
+    msg.send "チャドの霊圧が・・・消えた・・・？"
+
+  robot.hear /^片手に$/i, (msg) ->
+    msg.send "ピストル"
+
+  robot.hear /^心に$/i, (msg) ->
+    msg.send "花束"
+
+  robot.hear /^唇に$/i, (msg) ->
+    msg.send "火の酒"
+
+  robot.hear /^背中に$/i, (msg) ->
+    msg.send "人生を"
+
+  robot.hear /^チョコレイト$/i, (msg) ->
+    msg.send "ディスコ！！"
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
