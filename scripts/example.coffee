@@ -40,7 +40,7 @@ module.exports = (robot) ->
 
   robot.hear /(godzila|ゴジラ)/i, (msg) ->
     timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "")
-    msg.send "https://drive.google.com/open?id=0B8TFgKtyNaHMRWlMRWV6emlId3M?#{timestamp}"
+    msg.send "https://www.dropbox.com/sc/t2sotyjoe4ukuvg/AAA4EvZTFcdW-aNQGUCCyajDa?#{timestamp}"
 
   robot.hear /(疲れた|つかれた)/i, (msg) ->
     msg.send "#{msg.message.user.name}、お疲れさま！"
