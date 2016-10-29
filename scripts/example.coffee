@@ -1,5 +1,5 @@
 # Description:
-#   Example scripts for you to examine and try out.
+#   Satomin bot makes you happy
 #
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
@@ -11,39 +11,20 @@
 hellos = [
   "おはよ",
   "やっほ",
-  "Good morning"
-]
-
-godzilas = [
-  "ガッジーラ",
-  "Rando Yaguchiがbetterな選択"
-]
-
-fights = [
-  "お疲れさま",
-  "たまには休むことも大切だよ",
-  "Yaguchiほどじゃないわ"
+  "モーニング"
 ]
 
 module.exports = (robot) ->
-  robot.respond /Who\sam\sI/i, (msg) ->
-    msg.send "You are #{msg.message.user.name}"
 
-
-module.exports = (robot) ->
-  robot.hear /(hello|good( [d'])?ay(e)?)/i, (msg) ->
+  robot.hear /(おはよ.|hello|good( [d'])?ay(e)?)/i, (msg) ->
     hello = msg.random hellos
     msg.send hello.replace "%", msg.message.user.name
 
-module.exports = (robot) ->
-	robot.hear /(godzila|Godzila|ゴジラ)/, (msg) ->
-    godzila = msg.random godzilas
-    msg.send godzila.replace "%", msg.message.user.name
+  robot.hear /(godzila|ゴジラ)/i, (msg) ->
+    msg.send "ガッジーラ"
 
-module.exports = (robot) ->
-  robot.hear /.*(疲れた|つかれた).*/, (msg) ->
-    fight = msg.random fights
-    msg.send fight.replace "%", msg.message.user.name
+  robot.hear /(疲れた|つかれた)/i, (msg) ->
+    msg.send "#{msg.message.user.name}、お疲れさま！"
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
