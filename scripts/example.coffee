@@ -73,7 +73,7 @@ module.exports = (robot) ->
   robot.hear /^背中に$/i, (msg) ->
     msg.send "人生を"
 
-  robot.hear /^チョコレイト$/i, (msg) ->
+  robot.hear /(チョコレイト|チョコレート)/i, (msg) ->
     msg.send "ディスコ！！"
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
