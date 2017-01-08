@@ -78,7 +78,7 @@ module.exports = (robot) ->
 
   robot.hear /^check_ip_regexp/i, (msg) ->
     msg.send "Give me IP Regexp!"
-    msg.send "e.g.) ^122\.104\.1[0-2][0-9]\.1[0-9]$|^123\.123\.123\.123$"
+    # msg.send 'e.g.) ^122\.104\.1[0-2][0-9]\.1[0-9]$|^123\.123\.123\.123$'
     robot.hear /.*\\\..*/, (msg) ->
       target_ip_regexp = "#{msg.message}"
       msg.send "Give me IP parts!"
