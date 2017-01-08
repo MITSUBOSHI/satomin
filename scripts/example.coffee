@@ -85,7 +85,8 @@ module.exports = (robot) ->
       robot.hear /^\d{1,3}(\.\d{1,3}){0,3}$/, (msg) ->
         target_ip_parts = "#{msg.message}"
         @exec = require('child_process').exec
-        command = "echo '#{target_ip_parts}' | xargs -n1 -P2 ./scripts/go/ip_checker_practice '#{target_ip_regexp}'"
+        #command = "echo '#{target_ip_parts}' | xargs -n1 -P2 ./scripts/go/ip_checker_practice '#{target_ip_regexp}'"
+        command =  "./scripts/go/ip_checker_practice '#{target_ip_regexp}' '#{target_ip_parts}'"
         msg.send "Command: #{command}"
         @exec command, (error, stdout, stderr) ->
           msg.send error if error?
