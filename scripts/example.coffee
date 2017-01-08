@@ -75,6 +75,23 @@ module.exports = (robot) ->
 
   robot.hear /(チョコレイト|チョコレート)/i, (msg) ->
     msg.send "ディスコ！！"
+
+  robot.hear /^check_ip_regexp/i, (msg) ->
+    msg.send "Give me IP Regexp!"
+    msg.send "e.g.) ^122\.104\.1[0-2][0-9]\.1[0-9]$|^123\.123\.123\.123$"
+    robot.hear /.*\\\..*/, (msg) ->
+      target_ip_regexp = "#{msg.message}"
+      msg.send "Give me IP parts!"
+      robot.hear /^\d{1,3}(\.\d{1,3}){0,3}$/, (msg) ->
+        target_ip_parts = "#{msg.message}"
+        @exec = require('child_process').exec
+        command = "echo #{target_ip_parts} | xargs -n1 -P1 ./scripts/go/ip_checker_practice #{target_ip_regexp}"
+        msg.send "Command: #{command}"
+        @exec command, (error, stdout, stderr) ->
+          msg.send error if error?
+          msg.send stdout if stdout?
+          msg.send stderr if stderr?
+          msg.send "これでfinishだわ"
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
