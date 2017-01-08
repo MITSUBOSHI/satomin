@@ -86,13 +86,12 @@ module.exports = (robot) ->
         target_ip_parts = "#{msg.message}"
         @exec = require('child_process').exec
         #command = "echo '#{target_ip_parts}' | xargs -n1 -P2 ./scripts/go/ip_checker_practice '#{target_ip_regexp}'"
-        command =  "./scripts/go/ip_checker_practice #{target_ip_regexp} #{target_ip_parts}"
+        command =  ["./scripts/go/ip_checker_practice", "#{target_ip_regexp}", "#{target_ip_parts}"].join(" ")
         msg.send "Command: #{command}"
         @exec command, (error, stdout, stderr) ->
           msg.send error if error?
           msg.send stdout if stdout?
           msg.send stderr if stderr?
-          msg.send "これでfinishだわ"
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
