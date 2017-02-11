@@ -42,7 +42,7 @@ module.exports = (robot) ->
     timestamp = (new Date()).toISOString().replace(/[^0-9]/g, "")
     msg.send "ガッジーラ", "http://drive.google.com/uc?export=view&id=0B8TFgKtyNaHMRWlMRWV6emlId3M&time=#{timestamp}"
 
-  robot.hear /(疲れた|つかれた)/i, (msg) ->
+  robot.hear /(疲れた|つかれた)/, (msg) ->
     msg.send "#{msg.message.user.name}、お疲れさま！"
 
   robot.hear /(いやし|癒|heal me)/i, (msg) ->
@@ -52,28 +52,28 @@ module.exports = (robot) ->
     heal_img = "#{heal_img}&time=#{timestamp}"
     msg.send heal_word, heal_img
 
-  robot.hear /(コードレビュー|code.*\sreview)/i, (msg) ->
+  robot.hear /(コードレビュー|code.*\sreview)/, (msg) ->
     msg.send "F**king damn codesね"
 
-  robot.hear /人工無脳/i, (msg) ->
+  robot.hear /人工無脳/, (msg) ->
     msg.send "あ、ただの無能みーつけたっ！"
 
-  robot.hear /卍解/i, (msg) ->
+  robot.hear /卍解/, (msg) ->
     msg.send "チャドの霊圧が・・・消えた・・・？"
 
-  robot.hear /^片手に$/i, (msg) ->
+  robot.hear /^片手に$/, (msg) ->
     msg.send "ピストル"
 
-  robot.hear /^心に$/i, (msg) ->
+  robot.hear /^心に$/, (msg) ->
     msg.send "花束"
 
-  robot.hear /^唇に$/i, (msg) ->
+  robot.hear /^唇に$/, (msg) ->
     msg.send "火の酒"
 
-  robot.hear /^背中に$/i, (msg) ->
+  robot.hear /^背中に$/, (msg) ->
     msg.send "人生を"
 
-  robot.hear /(チョコレイト|チョコレート)/i, (msg) ->
+  robot.hear /(チョコレイト|チョコレート)/, (msg) ->
     msg.send "ディスコ！！"
 
   robot.hear /^check_ip_regexp/i, (msg) ->
